@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base application theme -->
+    <style name="Theme.AndroidERestaurant" parent="android:Theme.Material.Light">
+        <!-- Define the color of the action bar -->
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+    </style>
 
-    <style name="Theme.AndroidERestaurant" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Style for the action bar -->
+    <style name="ActionBarStyle" parent="android:Widget.Material.ActionBar">
+        <!-- Define the background color of the action bar -->
+        <item name="android:background">#FFA500</item> <!-- Orange color -->
+    </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AndroidERestaurant" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
 </resources>

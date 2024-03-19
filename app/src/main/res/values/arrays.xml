@@ -1,0 +1,17 @@
+<resources>
+    <array name="entries_titles">
+        <item>Entrée 1</item>
+        <item>Entrée 2</item>
+        <item>Entrée 3</item>
+    </array>
+    <array name="main_course_titles">
+        <item>Plat 1</item>
+        <item>Plat 2</item>
+        <item>Plat 3</item>
+    </array>
+    <array name="dessert_titles">
+        <item>Dessert 1</item>
+        <item>Dessert 2</item>
+        <item>Dessert 3</item>
+    </array>
+</resources>
