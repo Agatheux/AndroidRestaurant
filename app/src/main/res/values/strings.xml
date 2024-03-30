@@ -47,6 +47,7 @@
     <string name="category_entry">Entrées</string>
     <string name="category_main_course">Plats</string>
     <string name="category_dessert">Desserts</string>
+    <string name="title_activity_cart">CartActivity</string>
 
 
 </resources>

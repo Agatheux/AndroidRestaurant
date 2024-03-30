@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Divider
@@ -65,32 +66,86 @@ class HomeActivity : ComponentActivity() {
 
 @Composable
 fun HomeScreenContent(navController: NavController, launchCategoryActivity: (Int) -> Unit) {
+    Box(
+        modifier = Modifier
+            .background(Color(26, 0, 48)) // Définir la couleur de fond
+            .fillMaxSize() // Remplir toute la taille disponible
+    )
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        TextWithImage(text = "Bienvenue", imageResId = R.drawable.androiiiiid)
+    )
+    {
+        TextWithImage(text = "Bienvenue chez TakeawayApp", imageResId = R.drawable.logo)
 
-        ClickableTextWithNavigation(
-            text = "Entrées",
-            categoryId = 1,
-            onClick = { categoryId -> launchCategoryActivity(categoryId) }
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.entree),
+                contentDescription = null,
+                modifier = Modifier.size(30.dp)
+            )
+            ClickableTextWithNavigation(
+                text = "Entrées",
+                categoryId = 1,
+                onClick = { categoryId -> launchCategoryActivity(categoryId) },
+
+            )
+            Image(
+                painter = painterResource(id = R.drawable.entree),
+                contentDescription = null,
+                modifier = Modifier.size(30.dp)
+            )
+        }
+        Spacer(modifier = Modifier.height(5.dp))
         Divider(modifier = Modifier.padding(start = 100.dp, end = 100.dp))
         Spacer(modifier = Modifier.height(50.dp))
-        ClickableTextWithNavigation(
-            text = "Plats",
-            categoryId = 2,
-            onClick = { categoryId -> launchCategoryActivity(categoryId) }
-        )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.plats),
+                contentDescription = null, // Ajoutez une description si nécessaire
+                modifier = Modifier.size(30.dp) // Taille de l'image
+            )
+            ClickableTextWithNavigation(
+                text = "Plats",
+                categoryId = 2,
+                onClick = { categoryId -> launchCategoryActivity(categoryId) }
+            )
+            Image(
+                painter = painterResource(id = R.drawable.plats),
+                contentDescription = null, // Ajoutez une description si nécessaire
+                modifier = Modifier.size(30.dp) // Taille de l'image
+            )
+        }
+        Spacer(modifier = Modifier.height(5.dp))
         Divider(modifier = Modifier.padding(start = 100.dp, end = 100.dp))
         Spacer(modifier = Modifier.height(50.dp))
-        ClickableTextWithNavigation(
-            text = "Desserts",
-            categoryId = 3,
-            onClick = { categoryId -> launchCategoryActivity(categoryId) }
-        )
+
+        Row (
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.desserts),
+                contentDescription = null, // Ajoutez une description si nécessaire
+                modifier = Modifier.size(30.dp) // Taille de l'image
+            )
+            ClickableTextWithNavigation(
+                text = "Desserts",
+                categoryId = 3,
+                onClick = { categoryId -> launchCategoryActivity(categoryId) }
+            )
+            Image(
+                painter = painterResource(id = R.drawable.desserts),
+                contentDescription = null, // Ajoutez une description si nécessaire
+                modifier = Modifier.size(30.dp) // Taille de l'image
+            )
+        }
+        Spacer(modifier = Modifier.height(5.dp))
         Divider(modifier = Modifier.padding(start = 100.dp, end = 100.dp))
     }
 }
@@ -99,7 +154,7 @@ fun HomeScreenContent(navController: NavController, launchCategoryActivity: (Int
 fun ClickableTextWithNavigation(text: String, categoryId: Int, onClick: (Int) -> Unit) {
     Text(
         text = text,
-        style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFFFFA500)),
+        style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF23D7CB)),
         modifier = Modifier.clickable {
             // Appeler la fonction onClick avec l'ID de catégorie
             onClick(categoryId)
@@ -109,43 +164,29 @@ fun ClickableTextWithNavigation(text: String, categoryId: Int, onClick: (Int) ->
 
 @Composable
 fun TextWithImage(text: String, imageResId: Int, modifier: Modifier = Modifier) {
-    Spacer(modifier = Modifier.height(50.dp))
-    Row(
-        verticalAlignment = Alignment.Top,
+    Column(
+        verticalArrangement = Arrangement.Top, // Aligner le contenu en haut
+        horizontalAlignment = Alignment.CenterHorizontally, // Aligner le contenu au centre horizontalement
         modifier = modifier
+            .fillMaxWidth() // Prendre toute la largeur disponible
+            .padding(horizontal = 16.dp, vertical = 16.dp) // Ajouter une marge
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
-        Column(
-            horizontalAlignment = Alignment.End // Aligner le contenu à droite
-        ) {
-            Text(
-                text = "Bienvenue",
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFFFFA500), fontWeight = FontWeight.Bold, fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(30.dp))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                color = Color(0xFF23D7CB), // Couleur orange
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
             )
-            Text(
-                text = "chez",
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFFFFA500), fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            )
-            Text(
-                text = "DroidRestaurant",
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFF8B4513), fontStyle = FontStyle.Italic, fontSize = 20.sp)
-            )
-        }
-        Spacer(modifier = Modifier.width(20.dp))
-        Image(
-            painter = painterResource(id = R.drawable.androiiiiid),
-            contentDescription = null // Provide a content description if needed
         )
-        Spacer(modifier = Modifier.height(200.dp))
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    AndroidERestaurantTheme {
-        val navController = rememberNavController()
-        HomeScreenContent(navController) { }
+        Image(
+            painter = painterResource(id = imageResId),
+            contentDescription = null, // Provide a content description if needed
+            modifier = Modifier
+                .fillMaxWidth() // Remplir toute la largeur de l'écran
+                .aspectRatio(1f) // Ratio d'aspect 16:9 pour l'image
+                .height(240.dp) // Hauteur fixe de l'image
+        )
     }
 }
